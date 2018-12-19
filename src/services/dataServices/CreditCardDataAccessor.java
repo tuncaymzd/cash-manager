@@ -1,32 +1,32 @@
 package services.dataServices;
 
-import models.CreditCards;
+import models.CreditCard;
 
 import java.util.List;
 
-public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
+public class CreditCardDataAccessor implements IDataAccessor<CreditCard> {
     @Override
-    public void create(CreditCards obj) {
+    public void create(CreditCard obj) {
 
     }
 
     @Override
-    public List<CreditCards> readAll() {
+    public List<CreditCard> readAll() {
         return null;
     }
 
     @Override
-    public CreditCards read(int id) {
+    public CreditCard read(int id) {
         return null;
     }
 
     @Override
-    public boolean delete(CreditCards obj) {
+    public boolean delete(CreditCard obj) {
         return false;
     }
 
     @Override
-    public boolean update(CreditCards obj) {
+    public boolean update(CreditCard obj) {
         return false;
     }
 }

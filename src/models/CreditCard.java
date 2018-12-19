@@ -1,6 +1,6 @@
 package models;
 
-public class CreditCards  extends BaseModel {
+public class CreditCard extends BaseModel {
     long creditCardCode;
     String ownerName;
     int backCVCode;
