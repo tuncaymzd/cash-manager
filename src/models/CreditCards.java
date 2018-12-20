@@ -3,8 +3,41 @@ package models;
 public class CreditCards  extends BaseModel {
     long creditCardCode;
     String ownerName;
-    int backCVCode;
+    int bankCVCode;
     String bankName;
+
+    public static class Builder{
+
+        long creditCardCode;
+        String ownerName;
+        int backCVCode;
+        String bankName;
+
+        public Builder withCreditCardCode(long code){
+            this.creditCardCode = code;
+            return this;
+        }
+        public Builder withOwnerName(String name){
+            ownerName = name;
+            return this;
+        }
+        public Builder withBackCVcode(int code){
+            backCVCode = code;
+            return this;
+        }
+        public Builder withBankName(String name){
+            bankName = name;
+            return this;
+        }
+        public CreditCards Build(){
+            CreditCards creditCards = new CreditCards();
+            creditCards.bankCVCode = this.backCVCode;
+            creditCards.ownerName = this.ownerName;
+            creditCards.creditCardCode = this.creditCardCode;
+            creditCards.bankName = this.bankName;
+            return creditCards;
+        }
+    }
 
     public void setCreditCardCode(long creditCardCode) {
         this.creditCardCode = creditCardCode;
@@ -14,8 +47,8 @@ public class CreditCards  extends BaseModel {
         this.ownerName = ownerName;
     }
 
-    public void setBackCVCode(int backCVCode) {
-        this.backCVCode = backCVCode;
+    public void setBankCVCode(int bankCVCode) {
+        this.bankCVCode = bankCVCode;
     }
 
     public void setBankName(String bankName) {
@@ -30,8 +63,8 @@ public class CreditCards  extends BaseModel {
         return ownerName;
     }
 
-    public int getBackCVCode() {
-        return backCVCode;
+    public int getBankCVCode() {
+        return bankCVCode;
     }
 
     public String getBankName() {

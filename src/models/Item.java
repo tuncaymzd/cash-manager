@@ -5,19 +5,29 @@ import java.util.Date;
 public class Item extends BaseModel {
 
     static class Builder{
-        Item item = new Item();
+
+        String name;
+        float price;
+        Date dateCreated;
 
         public Builder withName(String name){
-            item.name = name;
+            this.name = name;
             return this;
         }
         public Builder withPrice(float price){
-            item.price = price;
+            this.price = price;
             return this;
         }
         public Builder withDateCreated(Date date){
-            item.dateCreated = date;
+            this.dateCreated = date;
             return this;
+        }
+        public Item Build(){
+            Item item = new Item();
+            item.dateCreated = dateCreated;
+            item.name = name;
+            item.price = price;
+            return item;
         }
     }
 
