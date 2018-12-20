@@ -17,7 +17,8 @@ public class Main extends Application {
         Stage secondStage = new Stage();
         Stage thirdStage = new Stage();
 
-        FirstScreenController firstScreenController = new FirstScreenController(ioc.getItemDataAccessor(), ioc.getSettingsDataAccessor(), ioc.getCreditCardDataAccessor());
+        FirstScreenController firstScreenController = new FirstScreenController(ioc.getItemDataAccessor(),
+                ioc.getSettingsDataAccessor(), ioc.getCreditCardDataAccessor());
         SecondScreenController secondScreenController = new SecondScreenController();
         ThirdScreenController thirdScreenController = new ThirdScreenController();
 
@@ -29,7 +30,9 @@ public class Main extends Application {
         FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("views/FirstScreenView.fxml"));
         firstLoader.setController(firstScreenController);
         Parent root = firstLoader.load();
+        Scene firstScene = new Scene(root);
         primaryStage.setTitle("First Screen");
+        primaryStage.setScene(firstScene);
         primaryStage.show();
 
         FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("views/SecondScreenView.fxml"));
