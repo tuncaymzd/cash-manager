@@ -19,8 +19,9 @@ public class Main extends Application {
         Stage thirdStage = new Stage();
 
         ItemDataAccessor i = new ItemDataAccessor();
-        Item item = new Item.Builder().withDateCreated(new Date()).withName("Ear pods").withPrice(200).Build();
-        i.create(item);
+        Item item = i.read(1);
+//        Item item = new Item.Builder().withDateCreated(new Date()).withName("Ear pods").withPrice(200).Build();
+//        i.create(item);
 
         FirstScreenController firstScreenController = new FirstScreenController();
         SecondScreenController secondScreenController = new SecondScreenController();
