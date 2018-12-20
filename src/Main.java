@@ -26,7 +26,11 @@ public class Main extends Application {
         FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("views/FirstScreenView.fxml"));
         firstLoader.setController(firstScreenController);
         Parent root = firstLoader.load();
+        Scene firstScene = new Scene(root, 600, 400);
         primaryStage.setTitle("First Screen");
+        primaryStage.setScene(firstScene);
+        primaryStage.setResizable(false);
+        firstScreenController.Initialize();
         primaryStage.show();
 
         FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("views/SecondScreenView.fxml"));
@@ -35,6 +39,7 @@ public class Main extends Application {
         Scene secondScene = new Scene(secondRoot, 200, 200);
         secondStage.setTitle("Second Screen");
         secondStage.setScene(secondScene);
+        secondStage.setResizable(false);
         secondStage.show();
 
         FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/ThirdScreenView.fxml"));
@@ -43,6 +48,7 @@ public class Main extends Application {
         Scene thirdScene = new Scene(thirdRoot);
         thirdStage.setTitle("Third Screen");
         thirdStage.setScene(thirdScene);
+        thirdStage.setResizable(false);
         thirdStage.show();
     }
 
