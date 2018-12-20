@@ -52,7 +52,6 @@ public class Main extends Application {
         thirdStage.show();
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
