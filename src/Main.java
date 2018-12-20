@@ -6,6 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import models.Item;
+import services.dataServices.ItemDataAccessor;
+
+import java.util.Date;
 
 public class Main extends Application {
 
@@ -13,6 +17,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Stage secondStage = new Stage();
         Stage thirdStage = new Stage();
+
+        ItemDataAccessor i = new ItemDataAccessor();
+        Item item = new Item.Builder().withDateCreated(new Date()).withName("Ear pods").withPrice(200).Build();
+        i.create(item);
 
         FirstScreenController firstScreenController = new FirstScreenController();
         SecondScreenController secondScreenController = new SecondScreenController();

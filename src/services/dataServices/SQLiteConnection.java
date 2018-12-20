@@ -8,6 +8,10 @@ public class SQLiteConnection {
 
     private Connection connection;
 
+    public Connection getConnection() {
+        return connection;
+    }
+
     private static SQLiteConnection ourInstance = new SQLiteConnection();
 
     public static SQLiteConnection getInstance() {
@@ -21,6 +25,7 @@ public class SQLiteConnection {
         try {
             String url = "jdbc:sqlite:C:\\Users\\dtohi\\Desktop\\Epitech\\Cash Manager\\CashManagerDB.db";
             connection = DriverManager.getConnection(url);
+            connection.setAutoCommit(false);
             System.out.println("Connection to database terminated");
             return true;
         } catch (SQLException e){

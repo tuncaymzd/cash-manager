@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Item extends BaseModel {
 
-    static class Builder{
+    public static class Builder{
 
         String name;
         float price;
@@ -34,6 +34,30 @@ public class Item extends BaseModel {
     String name;
     float price;
     Date dateCreated;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
 
     private Item(String name, float price, Date dateCreated){
         this.name = name;
