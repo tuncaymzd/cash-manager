@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,6 +41,12 @@ public class FirstScreenController extends BaseController {
     private TableColumn<Item, Float> priceColumn2;
     @FXML
     private Label totalAmountLabel;
+    @FXML
+    private CheckBox creditCardCheckBox;
+    @FXML
+    private CheckBox checkCheckBox;
+    @FXML
+    private CheckBox cashCheckBox;
 
     public void Initialize(){
 
@@ -49,6 +56,36 @@ public class FirstScreenController extends BaseController {
         items.add(firstItem);
         items.add(secondItem);
 
+
+        cashCheckBox.setSelected(true);
+
+        cashCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(cashCheckBox.isSelected()){
+                    checkCheckBox.setSelected(false);
+                    creditCardCheckBox.setSelected(false);
+                }
+            }
+        });
+        checkCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(checkCheckBox.isSelected()){
+                    cashCheckBox.setSelected(false);
+                    creditCardCheckBox.setSelected(false);
+                }
+            }
+        });
+        creditCardCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(creditCardCheckBox.isSelected()){
+                    checkCheckBox.setSelected(false);
+                    cashCheckBox.setSelected(false);
+                }
+            }
+        });
         removebutton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 removeButtonClicked(e);
