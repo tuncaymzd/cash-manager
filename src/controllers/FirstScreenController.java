@@ -20,8 +20,10 @@ public class FirstScreenController extends BaseController {
     IListener thirdListener;
     final ObservableList<Item> items = FXCollections.observableArrayList();
     final ObservableList<Item> shoppingCard = FXCollections.observableArrayList();
-    int previousIndex = -1;
+    Item selectedItem = null;
 
+    @FXML
+    private Button removebutton;
     @FXML
     private Button validateButton;
     @FXML
@@ -47,6 +49,11 @@ public class FirstScreenController extends BaseController {
         items.add(firstItem);
         items.add(secondItem);
 
+        removebutton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                removeButtonClicked(e);
+            }
+        });
         validateButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 validateButtonClicked(e);
@@ -67,13 +74,7 @@ public class FirstScreenController extends BaseController {
             }
         });
         shoppingCardTable.getSelectionModel().selectedItemProperty().addListener((obj, old, newValue) -> {
-            if(old != null){
-                if(((Item)old).index == previousIndex){
-                    previousIndex = -1;
-                    return;
-                }
-            }
-            itemRemoved((Item)newValue);
+            selectedItem = (Item)newValue;
         });
     }
 
@@ -101,6 +102,13 @@ public class FirstScreenController extends BaseController {
     private void validateButtonClicked(ActionEvent event) {
 
     }
+    private void removeButtonClicked(ActionEvent event){
+        if(selectedItem != null){
+            totalPrice -= selectedItem.getPrice();
+            totalAmountLabel.setText(Float.toString(totalPrice));
+            shoppingCard.remove(selectedItem);
+        }
+    }
     private void itemSelected(Item item) throws CloneNotSupportedException {
         if(item != null){
             totalPrice += item.getPrice();
@@ -110,18 +118,6 @@ public class FirstScreenController extends BaseController {
                     .withName(item.getName()).Build();
             newItem.index = shoppingCard.size();
             shoppingCard.add((Item)newItem.clone());
-        }
-    }
-    private void itemRemoved(Item item){
-        if(item != null){
-            totalPrice -= item.getPrice();
-            totalAmountLabel.setText(Float.toString(totalPrice));
-
-            Platform.runLater(() -> {
-                previousIndex = item.index;
-                shoppingCard.removeIf(i ->
-                        i.index == item.index);
-            });
         }
     }
 }
