@@ -1,10 +1,10 @@
 package services.dataServices;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface IDataAccessor<T> {
     void create(T obj);
-    List<T> readAll();
+    ArrayList<T> readAll();
     T read(int id);
     boolean delete(T obj);
     boolean update(T obj);

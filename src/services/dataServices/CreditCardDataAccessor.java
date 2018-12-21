@@ -12,18 +12,19 @@ import java.util.ArrayList;
 import static java.sql.Types.NULL;
 
 public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
+
+    public CreditCardDataAccessor(){
+
+    }
+
     @Override
     public void create(CreditCards obj) {
         SQLiteConnection.getInstance().Connect();
         Connection connection = SQLiteConnection.getInstance().getConnection();
         try {
-            String sql = "INSERT INTO `CreditCards`(`CreditCardCode`,`OwnerName`,`BackCVCode`,`BankName` ) VALUES ('"+
-                    obj.getCreditCardCode() + "'," + obj.getOwnerName() +",'" + obj.getBackCVCode() + obj.getBankName()+"');";
-            System.out.println(sql);
             Statement statement = connection.createStatement();
-            statement.executeUpdate(sql);
+            statement.executeUpdate("INSERT into 'CreditCards'('CreditCardCode','OwnerName','BackCVCode','BankName') VALUES (" + obj.getCreditCardCode() + ",'" + obj.getOwnerName() + "'" + "," + obj.getBackCVCode()+", '"+ obj.getBankName() + "');");
             statement.close();
-            connection.commit();
             SQLiteConnection.getInstance().DisConnect();
         } catch (SQLException e) {
             System.out.println("Error occured while creating an credit card");
@@ -34,7 +35,7 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
     }
 
     @Override
-    public List<CreditCards> readAll() {
+    public ArrayList<CreditCards> readAll() {
 
         ArrayList<CreditCards> cardslist = new ArrayList<CreditCards>();
         try{
@@ -50,18 +51,11 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
                 cardsTmp.setOwnerName(set.getString("OwnerName"));
                 cardsTmp.setBackCVCode(set.getInt("BackCVCode"));
                 cardsTmp.setBankName(set.getString("BankName"));
-                String s = set.getString("DateCreated");
-                cardsTmp.setDateCreated(new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",
-                        Locale.ENGLISH).parse(s));
-                cardslist.add(cardsTmp);
             }
             set.close();
             statement.close();
         } catch (SQLException e){
             System.out.println("Error occured while getting this item");
-            e.printStackTrace();
-        } catch (ParseException e) {
-            System.out.println("Error occured while parsing date in this item");
             e.printStackTrace();
         } finally {
             SQLiteConnection.getInstance().DisConnect();
@@ -84,18 +78,12 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
                 bufferCards.setOwnerName(set.getString("OwnerName"));
                 bufferCards.setBackCVCode(set.getInt("BackCVCode"));
                 bufferCards.setBankName(set.getString("BankName"));
-                String s = set.getString("DateCreated");
-                bufferCards.setDateCreated(new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",
-                        Locale.ENGLISH).parse(s));
             }
             cards = bufferCards;
             set.close();
             statement.close();
         } catch (SQLException e){
             System.out.println("Error occured while getting this Credit card");
-            e.printStackTrace();
-        } catch (ParseException e) {
-            System.out.println("Error occured while parsing date in this credit card");
             e.printStackTrace();
         } finally {
             SQLiteConnection.getInstance().DisConnect();

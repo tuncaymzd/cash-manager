@@ -14,7 +14,4 @@ public class BaseModel {
         this.id = id;
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
 }

@@ -7,9 +7,8 @@ public class CreditCards  extends BaseModel {
     String ownerName;
     int backCVCode;
     String bankName;
-    Date dateCreated;
 
-    public CreditCards(){
+    private CreditCards(){
 
     }
 
@@ -19,7 +18,6 @@ public class CreditCards  extends BaseModel {
         String ownerName;
         int backCVCode;
         String bankName;
-        Date dateCreated;
 
         public Builder withCreditCardCode(long code){
             this.creditCardCode = code;
@@ -38,24 +36,14 @@ public class CreditCards  extends BaseModel {
             return this;
         }
 
-        public Builder withDateCreated(Date date){
-            this.dateCreated = date;
-            return this;
-        }
-
         public CreditCards Build(){
             CreditCards creditCards = new CreditCards();
             creditCards.backCVCode = this.backCVCode;
             creditCards.ownerName = this.ownerName;
             creditCards.creditCardCode = this.creditCardCode;
             creditCards.bankName = this.bankName;
-            creditCards.dateCreated = dateCreated;
             return creditCards;
         }
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
     }
 
     public void setCreditCardCode(long creditCardCode) {

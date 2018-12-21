@@ -13,18 +13,18 @@ import static java.sql.Types.NULL;
 
 public class ItemDataAccessor implements IDataAccessor<Item>{
 
+    public ItemDataAccessor() {
+
+    }
+
     @Override
     public void create(Item obj) {
         SQLiteConnection.getInstance().Connect();
         Connection connection = SQLiteConnection.getInstance().getConnection();
         try {
-            String sql = "INSERT INTO `Items`(`Name`,`Price`,`DateCreated`) VALUES ('"+
-                    obj.getName() + "'," + obj.getPrice() +",'" + obj.getDateCreated().toString() +"');";
-            System.out.println(sql);
             Statement statement = connection.createStatement();
-            statement.executeUpdate(sql);
+            statement.executeUpdate("INSERT into 'Items'('Name','Price','DateCreated') VALUES ('" + obj.getName() + "'," + obj.getPrice() + ",'" + obj.getDateCreated().toString()+"');");
             statement.close();
-            connection.commit();
         } catch (SQLException e) {
             System.out.println("Error occured while creating an item");
             e.printStackTrace();
@@ -34,7 +34,7 @@ public class ItemDataAccessor implements IDataAccessor<Item>{
     }
 
     @Override
-    public List<Item> readAll() {
+    public ArrayList<Item> readAll() {
         ArrayList<Item> itemlist = new ArrayList<Item>();
         try{
             SQLiteConnection.getInstance().Connect();

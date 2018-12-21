@@ -15,18 +15,19 @@ import java.util.Locale;
 import static java.sql.Types.NULL;
 
 public class SettingsDataAccessor implements IDataAccessor<Settings> {
+
+    public SettingsDataAccessor() {
+
+    }
+
     @Override
     public void create(Settings obj) {
         SQLiteConnection.getInstance().Connect();
         Connection connection = SQLiteConnection.getInstance().getConnection();
         try {
-            String sql = "INSERT INTO `Settings`(`Delay`,`Currency`,`PreferedPaymentMethod`) VALUES ('"+
-                    obj.getDelay() + "'," + obj.getCurrency() +",'" + obj.getPreferedPaymentMethod() +"');";
-            System.out.println(sql);
             Statement statement = connection.createStatement();
-            statement.executeUpdate(sql);
+            statement.executeUpdate("INSERT into 'Settings'('Delay','Currency','PreferedPaymentMethod') VALUES ('" + obj.getDelay() + "','" + obj.getCurrency() + "'" + ",'" + obj.getPreferedPaymentMethod()+"');");
             statement.close();
-            connection.commit();
         } catch (SQLException e) {
             System.out.println("Error occured while creating an setting");
             e.printStackTrace();
@@ -36,7 +37,7 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
     }
 
     @Override
-    public List<Settings> readAll() {
+    public ArrayList<Settings> readAll() {
         ArrayList<Settings> settingslist = new ArrayList<Settings>();
         try{
             SQLiteConnection.getInstance().Connect();
@@ -46,22 +47,16 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
             while (set.next()){
                 Settings settingsTmp = null;
                 settingsTmp = new Settings.Builder().Build();
-                settingsTmp.setId(set.getInt("ID"));
-                settingsTmp.setDelay(set.getInt("Delay"));
-                settingsTmp.setCurrency(set.getString("Currency"));
-                settingsTmp.setPreferedPaymentMethod(set.getString("PreferedPaymentMethod"));
-                String s = set.getString("DateCreated");
-                settingsTmp.setDateCreated(new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",
-                        Locale.ENGLISH).parse(s));
+                settingsTmp.setId(set.getInt(1));
+                settingsTmp.setCurrency(set.getString(3));
+                settingsTmp.setDelay(set.getInt(2));
+                settingsTmp.setPreferedPaymentMethod(set.getString(4));
                 settingslist.add(settingsTmp);
             }
             set.close();
             statement.close();
         } catch (SQLException e){
             System.out.println("Error occured while getting this item");
-            e.printStackTrace();
-        } catch (ParseException e) {
-            System.out.println("Error occured while parsing date in this item");
             e.printStackTrace();
         } finally {
             SQLiteConnection.getInstance().DisConnect();
@@ -79,22 +74,16 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
             ResultSet set = statement.executeQuery("SELECT * From Settings WHERE ID = "+id+";");
             Settings bufferSettings = new Settings.Builder().Build();
             while (set.next()){
-                bufferSettings.setId(set.getInt("ID"));
-                bufferSettings.setDelay(set.getInt("Delay"));
-                bufferSettings.setCurrency(set.getString("Currency"));
-                bufferSettings.setPreferedPaymentMethod(set.getString("PreferedPaymentMethod"));
-                String s = set.getString("DateCreated");
-                bufferSettings.setDateCreated(new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",
-                        Locale.ENGLISH).parse(s));
+                bufferSettings.setId(set.getInt(1));
+                bufferSettings.setDelay(set.getInt(2));
+                bufferSettings.setCurrency(set.getString(3));
+                bufferSettings.setPreferedPaymentMethod(set.getString(4));
             }
             setting = bufferSettings;
             set.close();
             statement.close();
         } catch (SQLException e){
             System.out.println("Error occured while getting this setting");
-            e.printStackTrace();
-        } catch (ParseException e) {
-            System.out.println("Error occured while parsing date in this setting");
             e.printStackTrace();
         } finally {
             SQLiteConnection.getInstance().DisConnect();

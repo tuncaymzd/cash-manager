@@ -8,7 +8,7 @@ public class Settings extends BaseModel {
     String currency;
     String preferedPaymentMethod;
 
-    public Settings() {
+    private Settings() {
 
     }
 
@@ -17,7 +17,6 @@ public class Settings extends BaseModel {
         int delay;
         String currency;
         String preferedPaymentMethod;
-        Date dateCreated;
 
         public Builder withDelay(int delay){
             this.delay = delay;
@@ -36,13 +35,7 @@ public class Settings extends BaseModel {
             settings.currency = this.currency;
             settings.preferedPaymentMethod = this.preferedPaymentMethod;
             settings.delay = this.delay;
-            settings.dateCreated = dateCreated;
             return settings;
-        }
-
-        public Builder withDateCreated(Date date){
-            this.dateCreated = date;
-            return this;
         }
     }
 
