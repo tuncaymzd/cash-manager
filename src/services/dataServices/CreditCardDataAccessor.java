@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ArrayList;
 
+import static java.sql.Types.NULL;
+
 public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
     @Override
     public void create(CreditCards obj) {
@@ -103,11 +105,53 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
 
     @Override
     public boolean delete(CreditCards obj) {
-        return false;
+        try {
+            SQLiteConnection.getInstance().Connect();
+            Connection connection = SQLiteConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+            ResultSet set = statement2.executeQuery("select ID from CreditCards WHERE ID="+obj.getId()+";");
+            if (set.next()) {
+                int id = set.getInt("id");
+                if (id == NULL) {
+                    System.out.println("This credit cards don't exist");
+                    return false;
+                }
+            }
+            statement.executeQuery("delete FROM CreditCards WHERE ID ="+obj.getId()+";");
+            System.out.println("This credit card has been deleted");
+            statement.close();
+        } catch (SQLException e){
+            System.out.println("Error occured while getting this credit card");
+            e.printStackTrace();
+        } finally {
+            SQLiteConnection.getInstance().DisConnect();
+        }
+        return true;
     }
 
     @Override
     public boolean update(CreditCards obj) {
-        return false;
+        try{
+            SQLiteConnection.getInstance().Connect();
+            Connection connection = SQLiteConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+            ResultSet set = statement2.executeQuery("select ID from CreditCards WHERE ID="+obj.getId()+";");
+            if (set.next()) {
+                int id = set.getInt("id");
+                if (id == NULL) {
+                    System.out.println("This credit card don't exist");
+                    return false;
+                }
+            }
+            ResultSet set2 = statement.executeQuery("UPDATE CreditCards SET CreditCardCode='"+obj.getCreditCardCode()+"', OwnerName='"+obj.getOwnerName()+"', BackCVCode='"+obj.getBankCVCode()+"',BankName='"+obj.getBankName()+"' WHERE ID="+obj.getId()+";");
+        } catch (SQLException e){
+            System.out.println("Error occured while update this credit card");
+            e.printStackTrace();
+        } finally {
+            SQLiteConnection.getInstance().DisConnect();
+        }
+        return true;
     }
 }

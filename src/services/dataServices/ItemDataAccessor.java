@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static java.sql.Types.NULL;
+
 public class ItemDataAccessor implements IDataAccessor<Item>{
 
     @Override
@@ -98,11 +100,53 @@ public class ItemDataAccessor implements IDataAccessor<Item>{
 
     @Override
     public boolean delete(Item obj) {
-        return false;
+        try {
+            SQLiteConnection.getInstance().Connect();
+            Connection connection = SQLiteConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+            ResultSet set = statement2.executeQuery("select ID from Items WHERE ID="+obj.getId()+";");
+            if (set.next()) {
+                int id = set.getInt("id");
+                if (id == NULL) {
+                    System.out.println("This items don't exist");
+                    return false;
+                }
+            }
+            statement.executeQuery("delete FROM Items WHERE ID ="+obj.getId()+";");
+            System.out.println("This item has been deleted");
+            statement.close();
+        } catch (SQLException e){
+            System.out.println("Error occured while delete this item");
+            e.printStackTrace();
+        } finally {
+            SQLiteConnection.getInstance().DisConnect();
+        }
+        return true;
     }
 
     @Override
     public boolean update(Item obj) {
-        return false;
+        try{
+            SQLiteConnection.getInstance().Connect();
+            Connection connection = SQLiteConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+            ResultSet set = statement2.executeQuery("select ID from Items WHERE ID="+obj.getId()+";");
+            if (set.next()) {
+                int id = set.getInt("id");
+                if (id == NULL) {
+                    System.out.println("This item don't exist");
+                    return false;
+                }
+            }
+            ResultSet set2 = statement.executeQuery("UPDATE Items SET Name='"+obj.getName()+"', Price='"+obj.getPrice()+"', DateCreated='"+obj.getDateCreated()+"' WHERE ID="+obj.getId()+";");
+        } catch (SQLException e){
+            System.out.println("Error occured while update this item");
+            e.printStackTrace();
+        } finally {
+            SQLiteConnection.getInstance().DisConnect();
+        }
+        return true;
     }
 }

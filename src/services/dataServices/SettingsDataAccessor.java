@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static java.sql.Types.NULL;
+
 public class SettingsDataAccessor implements IDataAccessor<Settings> {
     @Override
     public void create(Settings obj) {
@@ -102,11 +104,53 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
 
     @Override
     public boolean delete(Settings obj) {
-        return false;
+        try {
+            SQLiteConnection.getInstance().Connect();
+            Connection connection = SQLiteConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+            ResultSet set = statement2.executeQuery("select ID from Settings WHERE ID="+obj.getId()+";");
+            if (set.next()) {
+                int id = set.getInt("id");
+                if (id == NULL) {
+                    System.out.println("This setting don't exist");
+                    return false;
+                }
+            }
+            statement.executeQuery("delete FROM Settings WHERE ID ="+obj.getId()+";");
+            System.out.println("This setting has been deleted");
+            statement.close();
+        } catch (SQLException e){
+            System.out.println("Error occured while delete this setting");
+            e.printStackTrace();
+        } finally {
+            SQLiteConnection.getInstance().DisConnect();
+        }
+        return true;
     }
 
     @Override
     public boolean update(Settings obj) {
-        return false;
+        try{
+            SQLiteConnection.getInstance().Connect();
+            Connection connection = SQLiteConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+            ResultSet set = statement2.executeQuery("select ID from Settings WHERE ID="+obj.getId()+";");
+            if (set.next()) {
+                int id = set.getInt("id");
+                if (id == NULL) {
+                    System.out.println("This setting don't exist");
+                    return false;
+                }
+            }
+            ResultSet set2 = statement.executeQuery("UPDATE Settings SET Delay='"+obj.getDelay()+"', Currency='"+obj.getCurrency()+"', PreferedPaymentMethod='"+obj.getPreferedPaymentMethod()+"' WHERE ID="+obj.getId()+";");
+        } catch (SQLException e){
+            System.out.println("Error occured while update this setting");
+            e.printStackTrace();
+        } finally {
+            SQLiteConnection.getInstance().DisConnect();
+        }
+        return true;
     }
 }
