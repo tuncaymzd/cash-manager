@@ -82,7 +82,7 @@ public class CreditCards  extends BaseModel {
         return ownerName;
     }
 
-    public int getBankCVCode() {
+    public int getBackCVCode() {
         return backCVCode;
     }
 

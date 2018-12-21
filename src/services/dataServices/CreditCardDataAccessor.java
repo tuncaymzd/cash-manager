@@ -18,7 +18,7 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
         Connection connection = SQLiteConnection.getInstance().getConnection();
         try {
             String sql = "INSERT INTO `CreditCards`(`CreditCardCode`,`OwnerName`,`BackCVCode`,`BankName` ) VALUES ('"+
-                    obj.getCreditCardCode() + "'," + obj.getOwnerName() +",'" + obj.getBankCVCode() + obj.getBankName()+"');";
+                    obj.getCreditCardCode() + "'," + obj.getOwnerName() +",'" + obj.getBackCVCode() + obj.getBankName()+"');";
             System.out.println(sql);
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
@@ -145,7 +145,7 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
                     return false;
                 }
             }
-            ResultSet set2 = statement.executeQuery("UPDATE CreditCards SET CreditCardCode='"+obj.getCreditCardCode()+"', OwnerName='"+obj.getOwnerName()+"', BackCVCode='"+obj.getBankCVCode()+"',BankName='"+obj.getBankName()+"' WHERE ID="+obj.getId()+";");
+            ResultSet set2 = statement.executeQuery("UPDATE CreditCards SET CreditCardCode='"+obj.getCreditCardCode()+"', OwnerName='"+obj.getOwnerName()+"', BackCVCode='"+obj.getBackCVCode()+"',BankName='"+obj.getBankName()+"' WHERE ID="+obj.getId()+";");
         } catch (SQLException e){
             System.out.println("Error occured while update this credit card");
             e.printStackTrace();
