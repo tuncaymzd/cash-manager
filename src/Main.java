@@ -44,6 +44,8 @@ public class Main extends Application {
         thirdStage.setTitle("Third Screen");
         thirdStage.setScene(thirdScene);
         thirdStage.show();
+        thirdScreenController.initialize();
+
     }
 
 

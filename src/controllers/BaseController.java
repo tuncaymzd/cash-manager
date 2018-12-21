@@ -6,7 +6,7 @@ public class BaseController implements IListener {
 
     private IListener fistListener;
 
-    public IListener getFistListener() {
+    public IListener getListListener() {
         return fistListener;
     }
 
