@@ -6,6 +6,6 @@ public interface IDataAccessor<T> {
     void create(T obj);
     ArrayList<T> readAll();
     T read(int id);
-    boolean delete(T obj);
-    boolean update(T obj);
+    void delete(int index);
+    void update(T obj);
 }

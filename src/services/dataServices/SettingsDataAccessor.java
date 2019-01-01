@@ -38,12 +38,12 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
 
     @Override
     public ArrayList<Settings> readAll() {
-        ArrayList<Settings> settingslist = new ArrayList<Settings>();
+        ArrayList<Settings> settingsList = new ArrayList<Settings>();
         try{
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT * From Items;");
+            ResultSet set = statement.executeQuery("SELECT * From Settings;");
             while (set.next()){
                 Settings settingsTmp = null;
                 settingsTmp = new Settings.Builder().Build();
@@ -51,7 +51,7 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
                 settingsTmp.setCurrency(set.getString(3));
                 settingsTmp.setDelay(set.getInt(2));
                 settingsTmp.setPreferedPaymentMethod(set.getString(4));
-                settingslist.add(settingsTmp);
+                settingsList.add(settingsTmp);
             }
             set.close();
             statement.close();
@@ -61,7 +61,7 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
         } finally {
             SQLiteConnection.getInstance().DisConnect();
         }
-        return settingslist;
+        return settingsList;
     }
 
     @Override
@@ -92,21 +92,12 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
     }
 
     @Override
-    public boolean delete(Settings obj) {
+    public void delete(int index) {
         try {
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            Statement statement2 = connection.createStatement();
-            ResultSet set = statement2.executeQuery("select ID from Settings WHERE ID="+obj.getId()+";");
-            if (set.next()) {
-                int id = set.getInt("id");
-                if (id == NULL) {
-                    System.out.println("This setting don't exist");
-                    return false;
-                }
-            }
-            statement.executeQuery("delete FROM Settings WHERE ID ="+obj.getId()+";");
+            statement.executeUpdate("delete FROM 'Settings' WHERE ID ="+index+";");
             System.out.println("This setting has been deleted");
             statement.close();
         } catch (SQLException e){
@@ -115,31 +106,21 @@ public class SettingsDataAccessor implements IDataAccessor<Settings> {
         } finally {
             SQLiteConnection.getInstance().DisConnect();
         }
-        return true;
     }
 
     @Override
-    public boolean update(Settings obj) {
+    public void update(Settings obj) {
         try{
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            Statement statement2 = connection.createStatement();
-            ResultSet set = statement2.executeQuery("select ID from Settings WHERE ID="+obj.getId()+";");
-            if (set.next()) {
-                int id = set.getInt("id");
-                if (id == NULL) {
-                    System.out.println("This setting don't exist");
-                    return false;
-                }
-            }
-            ResultSet set2 = statement.executeQuery("UPDATE Settings SET Delay='"+obj.getDelay()+"', Currency='"+obj.getCurrency()+"', PreferedPaymentMethod='"+obj.getPreferedPaymentMethod()+"' WHERE ID="+obj.getId()+";");
+            statement.executeUpdate("UPDATE Settings SET Delay='"+obj.getDelay()+"', Currency='"+obj.getCurrency()+"', PreferedPaymentMethod='"+obj.getPreferedPaymentMethod()+"' WHERE ID="+obj.getId()+";");
+            System.out.println("This setting hab been updated");
         } catch (SQLException e){
             System.out.println("Error occured while update this setting");
             e.printStackTrace();
         } finally {
             SQLiteConnection.getInstance().DisConnect();
         }
-        return true;
     }
 }

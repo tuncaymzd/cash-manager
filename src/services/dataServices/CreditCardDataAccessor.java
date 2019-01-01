@@ -1,6 +1,7 @@
 package services.dataServices;
 
 import models.CreditCards;
+import sun.jvm.hotspot.memory.SystemDictionary;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -37,30 +38,31 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
     @Override
     public ArrayList<CreditCards> readAll() {
 
-        ArrayList<CreditCards> cardslist = new ArrayList<CreditCards>();
+        ArrayList<CreditCards> cardsList = new ArrayList<CreditCards>();
         try{
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT * From Items;");
+            ResultSet set = statement.executeQuery("SELECT * From CreditCards;");
             while (set.next()){
                 CreditCards cardsTmp = null;
                 cardsTmp = new CreditCards.Builder().Build();
-                cardsTmp.setId(set.getInt("ID"));
-                cardsTmp.setCreditCardCode(set.getInt("CreditCardCode"));
-                cardsTmp.setOwnerName(set.getString("OwnerName"));
-                cardsTmp.setBackCVCode(set.getInt("BackCVCode"));
-                cardsTmp.setBankName(set.getString("BankName"));
+                cardsTmp.setId(set.getInt(1));
+                cardsTmp.setCreditCardCode(set.getInt(2));
+                cardsTmp.setOwnerName(set.getString(3));
+                cardsTmp.setBackCVCode(set.getInt(4));
+                cardsTmp.setBankName(set.getString(5));
+                cardsList.add(cardsTmp);
             }
             set.close();
             statement.close();
         } catch (SQLException e){
-            System.out.println("Error occured while getting this item");
+            System.out.println("Error occured while getting this credit cards");
             e.printStackTrace();
         } finally {
             SQLiteConnection.getInstance().DisConnect();
         }
-        return cardslist;
+        return cardsList;
     }
 
     @Override
@@ -70,14 +72,14 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT * From CreditCards WHERE ID = "+id+";");
+            ResultSet set = statement.executeQuery("SELECT * from 'CreditCards' WHERE ID = "+id+";");
             CreditCards bufferCards = new CreditCards.Builder().Build();
             while (set.next()){
-                bufferCards.setId(set.getInt("ID"));
-                bufferCards.setCreditCardCode(set.getInt("CreditCardCode"));
-                bufferCards.setOwnerName(set.getString("OwnerName"));
-                bufferCards.setBackCVCode(set.getInt("BackCVCode"));
-                bufferCards.setBankName(set.getString("BankName"));
+                bufferCards.setId(set.getInt(1));
+                bufferCards.setCreditCardCode(set.getInt(2));
+                bufferCards.setOwnerName(set.getString(3));
+                bufferCards.setBackCVCode(set.getInt(4));
+                bufferCards.setBankName(set.getString(5));
             }
             cards = bufferCards;
             set.close();
@@ -92,21 +94,12 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
     }
 
     @Override
-    public boolean delete(CreditCards obj) {
+    public void delete(int index) {
         try {
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            Statement statement2 = connection.createStatement();
-            ResultSet set = statement2.executeQuery("select ID from CreditCards WHERE ID="+obj.getId()+";");
-            if (set.next()) {
-                int id = set.getInt("id");
-                if (id == NULL) {
-                    System.out.println("This credit cards don't exist");
-                    return false;
-                }
-            }
-            statement.executeQuery("delete FROM CreditCards WHERE ID ="+obj.getId()+";");
+            statement.executeUpdate("delete FROM 'CreditCards' WHERE ID = "+index+";");
             System.out.println("This credit card has been deleted");
             statement.close();
         } catch (SQLException e){
@@ -115,31 +108,21 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
         } finally {
             SQLiteConnection.getInstance().DisConnect();
         }
-        return true;
     }
 
     @Override
-    public boolean update(CreditCards obj) {
+    public void update(CreditCards obj) {
         try{
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            Statement statement2 = connection.createStatement();
-            ResultSet set = statement2.executeQuery("select ID from CreditCards WHERE ID="+obj.getId()+";");
-            if (set.next()) {
-                int id = set.getInt("id");
-                if (id == NULL) {
-                    System.out.println("This credit card don't exist");
-                    return false;
-                }
-            }
-            ResultSet set2 = statement.executeQuery("UPDATE CreditCards SET CreditCardCode='"+obj.getCreditCardCode()+"', OwnerName='"+obj.getOwnerName()+"', BackCVCode='"+obj.getBackCVCode()+"',BankName='"+obj.getBankName()+"' WHERE ID="+obj.getId()+";");
+            statement.executeUpdate("UPDATE CreditCards SET CreditCardCode='"+obj.getCreditCardCode()+"', OwnerName='"+obj.getOwnerName()+"', BackCVCode='"+obj.getBackCVCode()+"',BankName='"+obj.getBankName()+"' WHERE ID="+obj.getId()+";");
+            System.out.println("This credit cards has been updated");
         } catch (SQLException e){
             System.out.println("Error occured while update this credit card");
             e.printStackTrace();
         } finally {
             SQLiteConnection.getInstance().DisConnect();
         }
-        return true;
     }
 }
