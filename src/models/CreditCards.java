@@ -1,10 +1,16 @@
 package models;
 
+import java.util.Date;
+
 public class CreditCards  extends BaseModel {
     long creditCardCode;
     String ownerName;
-    int bankCVCode;
+    int backCVCode;
     String bankName;
+
+    private CreditCards(){
+
+    }
 
     public static class Builder{
 
@@ -29,9 +35,10 @@ public class CreditCards  extends BaseModel {
             bankName = name;
             return this;
         }
+
         public CreditCards Build(){
             CreditCards creditCards = new CreditCards();
-            creditCards.bankCVCode = this.backCVCode;
+            creditCards.backCVCode = this.backCVCode;
             creditCards.ownerName = this.ownerName;
             creditCards.creditCardCode = this.creditCardCode;
             creditCards.bankName = this.bankName;
@@ -47,8 +54,8 @@ public class CreditCards  extends BaseModel {
         this.ownerName = ownerName;
     }
 
-    public void setBankCVCode(int bankCVCode) {
-        this.bankCVCode = bankCVCode;
+    public void setBackCVCode(int bankCVCode) {
+        this.backCVCode = bankCVCode;
     }
 
     public void setBankName(String bankName) {
@@ -63,12 +70,16 @@ public class CreditCards  extends BaseModel {
         return ownerName;
     }
 
-    public int getBankCVCode() {
-        return bankCVCode;
+    public int getBackCVCode() {
+        return backCVCode;
     }
 
     public String getBankName() {
         return bankName;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
     }
 
     @Override

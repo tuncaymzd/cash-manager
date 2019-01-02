@@ -1,10 +1,15 @@
 package models;
 
+import java.util.Date;
+
 public class Settings extends BaseModel {
 
     int delay;
     String currency;
     String preferedPaymentMethod;
+
+    private Settings() {
+    }
 
     public static class Builder{
 

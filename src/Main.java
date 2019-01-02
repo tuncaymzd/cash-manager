@@ -11,8 +11,12 @@ import services.dataServices.ItemDataAccessor;
 
 import java.util.Date;
 
-public class Main extends Application {
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+
+public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Stage secondStage = new Stage();
@@ -20,8 +24,6 @@ public class Main extends Application {
 
         ItemDataAccessor i = new ItemDataAccessor();
         Item item = i.read(1);
-//        Item item = new Item.Builder().withDateCreated(new Date()).withName("Ear pods").withPrice(200).Build();
-//        i.create(item);
 
         FirstScreenController firstScreenController = new FirstScreenController();
         SecondScreenController secondScreenController = new SecondScreenController();
@@ -53,10 +55,5 @@ public class Main extends Application {
         thirdStage.setTitle("Third Screen");
         thirdStage.setScene(thirdScene);
         thirdStage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

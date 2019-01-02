@@ -31,13 +31,13 @@ public class Item extends BaseModel {
         }
     }
 
-    String name;
-    float price;
-    Date dateCreated;
-
     public void setName(String name) {
         this.name = name;
     }
+
+    String name;
+    float price;
+    Date dateCreated;
 
     public void setPrice(float price) {
         this.price = price;
@@ -59,13 +59,8 @@ public class Item extends BaseModel {
         return dateCreated;
     }
 
-    private Item(String name, float price, Date dateCreated){
-        this.name = name;
-        this.price = price;
-        this.dateCreated = dateCreated;
+    private Item(){
     }
-
-    public Item(){}
 
     @Override
     public int getId() {
