@@ -68,14 +68,34 @@ public class Main {
         //items.setName("mac book pro");
         //items.setPrice(1050);
         //items.setDateCreated(new Date());
-        //ItemDataAccessor data = new ItemDataAccessor();
+
         //data.create(items);
-        //CreditCards cards = new CreditCards.Builder().Build();
-        //cards.setCreditCardCode(1234);
-        //cards.setOwnerName("tuncay");
-        //cards.setBackCVCode(123);
-        //cards.setBankName("credit agricole");
+        /*
+        CreditCards cards = new CreditCards.Builder().Build();
+        cards.setCreditCardCode(1234);
+        cards.setOwnerName("tuncay");
+        cards.setBackCVCode(123);
+        cards.setBankName("credit agricole");
         CreditCardDataAccessor data = new CreditCardDataAccessor();
+        data.delete(3);
+        data.create(cards);
+
+        CreditCards cards2 = new CreditCards.Builder().Build();
+        cards2.setCreditCardCode(4567);
+        cards2.setOwnerName("simon");
+        cards2.setBackCVCode(456);
+        cards2.setBankName("LCL");
+
+        data.create(cards2);
+
+        CreditCards cards3 = new CreditCards.Builder().Build();
+        cards3.setCreditCardCode(5678);
+        cards3.setOwnerName("damien");
+        cards3.setBackCVCode(789);
+        cards3.setBankName("BNP");
+
+        data.create(cards3);
+        */
         //data.create(cards);
         //System.out.println(data.read(1).getBackCVCode());
         //System.out.println(data.read(1).getBankName());
@@ -106,5 +126,56 @@ public class Main {
         //cards.setBackCVCode(123456);
         //cards.setBankName("credit agricoleupdate");
         //data.update(cards);
+        //ItemDataAccessor data = new ItemDataAccessor();
+
+        //data.delete(5);
+        //items.setName("mac book air");
+        //items.setPrice(950);
+        //items.setDateCreated(new Date());
+
+        //data.create(items);
+
+        //Item items2 = new Item.Builder().Build();
+        //items2.setName("mac mini");
+        //items2.setPrice(1750);
+        //items2.setDateCreated(new Date());
+
+        //data.create(items2);
+
+       // Item items3 = new Item.Builder().Build();
+        //items3.setName("mac book air");
+        //items3.setPrice(950);
+        //items3.setDateCreated(new Date());
+
+       // data.create(items3);
+/*
+        Item items4 = new Item.Builder().Build();
+        items4.setName("apple watch");
+        items4.setPrice(450);
+        items4.setDateCreated(new Date());
+
+        data.create(items4);
+
+        Item items5 = new Item.Builder().Build();
+        items5.setName("apple TV");
+        items5.setPrice(2000);
+        items5.setDateCreated(new Date());
+
+        data.create(items5);
+
+        Item items6 = new Item.Builder().Build();
+        items6.setName("IPad mini");
+        items6.setPrice(400);
+        items6.setDateCreated(new Date());
+
+        data.create(items6);
+
+        Item items7 = new Item.Builder().Build();
+        items7.setName("IPad 2018");
+        items7.setPrice(1400);
+        items7.setDateCreated(new Date());
+
+        data.create(items7);
+*/
     }
 }
