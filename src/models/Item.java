@@ -83,13 +83,6 @@ public class Item extends BaseModel implements Cloneable {
         return dateCreated;
     }
 
-    public Item(String name, float price, Date dateCreated){
-        this.name = name;
-        this.price = price;
-        this.dateCreated = dateCreated;
-    }
-
-    private Item(){}
 
     @Override
     public int getId() {
@@ -105,7 +98,6 @@ public class Item extends BaseModel implements Cloneable {
     public String toString() {
         return super.toString();
     }
-
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();

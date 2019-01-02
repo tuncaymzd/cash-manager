@@ -6,13 +6,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import models.Item;
+import services.dataServices.ItemDataAccessor;
+
+import java.util.Date;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 
 public class Main extends Application {
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         Stage secondStage = new Stage();
         Stage thirdStage = new Stage();
+
+        ItemDataAccessor i = new ItemDataAccessor();
+        Item item = i.read(1);
 
         FirstScreenController firstScreenController = new FirstScreenController();
         SecondScreenController secondScreenController = new SecondScreenController();
@@ -50,10 +61,5 @@ public class Main extends Application {
         thirdStage.setScene(thirdScene);
         thirdStage.setResizable(false);
         thirdStage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
