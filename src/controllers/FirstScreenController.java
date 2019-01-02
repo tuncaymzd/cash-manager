@@ -75,6 +75,5 @@ public class FirstScreenController extends BaseController {
     }
 
     private void validateButtonClicked(ActionEvent event) {
-
     }
 }
