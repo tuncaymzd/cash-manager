@@ -125,4 +125,30 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
             SQLiteConnection.getInstance().DisConnect();
         }
     }
+
+    public boolean codeIsGood(long code, String name) {
+        try{
+            SQLiteConnection.getInstance().Connect();
+            Connection connection = SQLiteConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet set = statement.executeQuery("SELECT CreditCardCode from CreditCards WHERE OwnerName ='" + name + "';");
+            if (set.next()) {
+                long mdp = set.getLong("CreditCardCode");
+                if (mdp == code) {
+                    System.out.println("This code is good");
+                    return true;
+                }
+                else {
+                    System.out.println("This code is false");
+                    return false;
+                }
+            }
+        } catch (SQLException e){
+            System.out.println("Error occured while verify code of cards");
+            e.printStackTrace();
+        } finally {
+            SQLiteConnection.getInstance().DisConnect();
+        }
+        return false;
+    }
 }
