@@ -1,10 +1,43 @@
 package models;
 
+import java.util.Date;
+
 public class Settings extends BaseModel {
 
     int delay;
     String currency;
     String preferedPaymentMethod;
+
+    private Settings() {
+
+    }
+
+    public static class Builder{
+
+        int delay;
+        String currency;
+        String preferedPaymentMethod;
+
+        public Builder withDelay(int delay){
+            this.delay = delay;
+            return this;
+        }
+        public Builder withCurrency(String currency){
+            this.currency = currency;
+            return  this;
+        }
+        public Builder withPreferedPaymentMethod(String paymentMethod){
+            this.preferedPaymentMethod = paymentMethod;
+            return this;
+        }
+        public Settings Build(){
+            Settings settings = new Settings();
+            settings.currency = this.currency;
+            settings.preferedPaymentMethod = this.preferedPaymentMethod;
+            settings.delay = this.delay;
+            return settings;
+        }
+    }
 
     @Override
     public int getId() {
