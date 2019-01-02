@@ -142,6 +142,7 @@ public class FirstScreenController extends BaseController {
     private void removeButtonClicked(ActionEvent event){
         if(selectedItem != null){
             totalPrice -= selectedItem.getPrice();
+            secondListener.updateTotalPrice(totalPrice);
             totalAmountLabel.setText(Float.toString(totalPrice));
             shoppingCard.remove(selectedItem);
         }
@@ -149,6 +150,7 @@ public class FirstScreenController extends BaseController {
     private void itemSelected(Item item) throws CloneNotSupportedException {
         if(item != null){
             totalPrice += item.getPrice();
+            secondListener.updateTotalPrice(totalPrice);
             totalAmountLabel.setText(Float.toString(totalPrice));
             Item newItem = new Item.Builder().withPrice(item.getPrice())
                     .withDateCreated(item.getDateCreated())

@@ -18,4 +18,9 @@ public class BaseController implements IListener {
     public void onEventFired(String message) {
 
     }
+
+    @Override
+    public void updateTotalPrice(float price) {
+
+    }
 }

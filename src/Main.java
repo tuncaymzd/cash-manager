@@ -19,6 +19,7 @@ import java.util.List;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
+
         Stage secondStage = new Stage();
         Stage thirdStage = new Stage();
 
@@ -28,11 +29,6 @@ public class Main extends Application {
         FirstScreenController firstScreenController = new FirstScreenController();
         SecondScreenController secondScreenController = new SecondScreenController();
         ThirdScreenController thirdScreenController = new ThirdScreenController();
-
-        firstScreenController.setSecondListener(thirdScreenController);
-        firstScreenController.setFistListener(secondScreenController);
-        secondScreenController.setFistListener(firstScreenController);
-        thirdScreenController.setFistListener(firstScreenController);
 
         FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("views/FirstScreenView.fxml"));
         firstLoader.setController(firstScreenController);
@@ -47,7 +43,7 @@ public class Main extends Application {
         FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("views/SecondScreenView.fxml"));
         secondLoader.setController(secondScreenController);
         Parent secondRoot = secondLoader.load();
-        Scene secondScene = new Scene(secondRoot, 200, 200);
+        Scene secondScene = new Scene(secondRoot, 300, 300);
         secondStage.setTitle("Second Screen");
         secondStage.setScene(secondScene);
         secondStage.setResizable(false);
@@ -61,5 +57,11 @@ public class Main extends Application {
         thirdStage.setScene(thirdScene);
         thirdStage.setResizable(false);
         thirdStage.show();
+
+
+        firstScreenController.setSecondListener(secondScreenController);
+        firstScreenController.setFistListener(thirdScreenController);
+        secondScreenController.setFistListener(firstScreenController);
+        thirdScreenController.setFistListener(firstScreenController);
     }
 }
