@@ -2,13 +2,13 @@ package models;
 
 import java.util.Date;
 
-public class CreditCards  extends BaseModel {
+public class CreditCard extends BaseModel {
     long creditCardCode;
     String ownerName;
     int backCVCode;
     String bankName;
 
-    private CreditCards(){
+    private CreditCard(){
 
     }
 
@@ -36,8 +36,8 @@ public class CreditCards  extends BaseModel {
             return this;
         }
 
-        public CreditCards Build(){
-            CreditCards creditCards = new CreditCards();
+        public CreditCard Build(){
+            CreditCard creditCards = new CreditCard();
             creditCards.backCVCode = this.backCVCode;
             creditCards.ownerName = this.ownerName;
             creditCards.creditCardCode = this.creditCardCode;

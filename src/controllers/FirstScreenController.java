@@ -10,6 +10,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import models.Item;
+import models.CreditCard;
+import models.Item;
+import models.Settings;
 import services.dataServices.IDataAccessor;
 import shared.IListener;
 
@@ -50,8 +53,17 @@ public class FirstScreenController extends BaseController {
     @FXML
     private CheckBox cashCheckBox;
 
-    public FirstScreenController(IDataAccessor<Item> ida){
-        _itemDataAccessor = ida;
+    private IDataAccessor<Item> itemDataAccessor;
+    private IDataAccessor<Settings> settingsDataAccessor;
+    private IDataAccessor<CreditCard> creditCardDataAccessor;
+
+
+    public FirstScreenController(IDataAccessor<Item> itemDataAccessor,
+                                 IDataAccessor<Settings> settingsDataAccessor,
+                                 IDataAccessor<CreditCard> creditCardDataAccessor) {
+        this.itemDataAccessor = itemDataAccessor;
+        this.settingsDataAccessor = settingsDataAccessor;
+        this.creditCardDataAccessor = creditCardDataAccessor;
     }
 
     public void Initialize(){

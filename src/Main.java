@@ -15,18 +15,19 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import shared.IOC;
 
 public class Main extends Application {
+    static IOC ioc = new IOC();
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         Stage secondStage = new Stage();
         Stage thirdStage = new Stage();
 
-        IDataAccessor<Item> itemDataAccessor = new ItemDataAccessor();
-
-        FirstScreenController firstScreenController = new FirstScreenController();
+        FirstScreenController firstScreenController = new FirstScreenController(ioc.getItemDataAccessor(),
+                ioc.getSettingsDataAccessor(), ioc.getCreditCardDataAccessor());
         SecondScreenController secondScreenController = new SecondScreenController();
         ThirdScreenController thirdScreenController = new ThirdScreenController();
 
@@ -58,10 +59,12 @@ public class Main extends Application {
         thirdStage.setResizable(false);
         thirdStage.show();
 
-
         firstScreenController.setSecondListener(secondScreenController);
         firstScreenController.setFistListener(thirdScreenController);
         secondScreenController.setFistListener(firstScreenController);
         thirdScreenController.setFistListener(firstScreenController);
+    }
+    public static void main(String[] args) {
+        launch(args);
     }
 }
