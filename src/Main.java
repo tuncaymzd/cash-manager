@@ -64,6 +64,7 @@ public class Main extends Application {
         secondScreenController.setFistListener(firstScreenController);
         thirdScreenController.setFistListener(firstScreenController);
     }
+
     public static void main(String[] args) {
         launch(args);
     }

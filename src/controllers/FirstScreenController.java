@@ -16,6 +16,7 @@ import models.Settings;
 import services.dataServices.IDataAccessor;
 import shared.IListener;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class FirstScreenController extends BaseController {
@@ -23,7 +24,6 @@ public class FirstScreenController extends BaseController {
     private static float totalPrice;
     IListener secondListener;
     IListener thirdListener;
-    IDataAccessor<Item> _itemDataAccessor;
     final ObservableList<Item> items = FXCollections.observableArrayList();
     final ObservableList<Item> shoppingCard = FXCollections.observableArrayList();
     Item selectedItem = null;
@@ -53,7 +53,7 @@ public class FirstScreenController extends BaseController {
     @FXML
     private CheckBox cashCheckBox;
 
-    private IDataAccessor<Item> itemDataAccessor;
+    private IDataAccessor<Item> _itemDataAccessor;
     private IDataAccessor<Settings> settingsDataAccessor;
     private IDataAccessor<CreditCard> creditCardDataAccessor;
 
@@ -61,18 +61,23 @@ public class FirstScreenController extends BaseController {
     public FirstScreenController(IDataAccessor<Item> itemDataAccessor,
                                  IDataAccessor<Settings> settingsDataAccessor,
                                  IDataAccessor<CreditCard> creditCardDataAccessor) {
-        this.itemDataAccessor = itemDataAccessor;
+        this._itemDataAccessor = itemDataAccessor;
         this.settingsDataAccessor = settingsDataAccessor;
         this.creditCardDataAccessor = creditCardDataAccessor;
     }
 
+    private void addItemsToListUI(ArrayList<Item> itms){
+        if(itms != null){
+            for(Item i : itms){
+                items.add(i);
+            }
+        }
+    }
+
     public void Initialize(){
 
+        addItemsToListUI(_itemDataAccessor.readAll());
         totalAmountLabel.setText("");
-        Item firstItem = new Item.Builder().withName("Personal Computer").withPrice(400).Build();
-        Item secondItem = new Item.Builder().withName("Phone").withPrice(300).Build();
-        items.add(firstItem);
-        items.add(secondItem);
 
         cashCheckBox.setSelected(true);
 

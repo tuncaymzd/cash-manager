@@ -24,7 +24,7 @@ public class SQLiteConnection {
 
     public boolean Connect(){
         try {
-            String url = "jdbc:sqlite:C:\\Users\\dtohi\\Desktop\\Buffer\\CashManagerDB.db";
+            String url = "jdbc:sqlite:C:\\Users\\dtohi\\Desktop\\Ba\\CashManagerDB.db";
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
             System.out.println("Connection to database terminated");
