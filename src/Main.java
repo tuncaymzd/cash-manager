@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.Item;
+import services.dataServices.IDataAccessor;
 import services.dataServices.ItemDataAccessor;
 
 import java.util.Date;
@@ -23,8 +24,7 @@ public class Main extends Application {
         Stage secondStage = new Stage();
         Stage thirdStage = new Stage();
 
-        ItemDataAccessor i = new ItemDataAccessor();
-        Item item = i.read(1);
+        IDataAccessor<Item> itemDataAccessor = new ItemDataAccessor();
 
         FirstScreenController firstScreenController = new FirstScreenController();
         SecondScreenController secondScreenController = new SecondScreenController();

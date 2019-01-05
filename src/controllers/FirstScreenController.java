@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import models.Item;
+import services.dataServices.IDataAccessor;
 import shared.IListener;
 
 import java.util.Date;
@@ -19,6 +20,7 @@ public class FirstScreenController extends BaseController {
     private static float totalPrice;
     IListener secondListener;
     IListener thirdListener;
+    IDataAccessor<Item> _itemDataAccessor;
     final ObservableList<Item> items = FXCollections.observableArrayList();
     final ObservableList<Item> shoppingCard = FXCollections.observableArrayList();
     Item selectedItem = null;
@@ -48,6 +50,10 @@ public class FirstScreenController extends BaseController {
     @FXML
     private CheckBox cashCheckBox;
 
+    public FirstScreenController(IDataAccessor<Item> ida){
+        _itemDataAccessor = ida;
+    }
+
     public void Initialize(){
 
         totalAmountLabel.setText("");
@@ -55,7 +61,6 @@ public class FirstScreenController extends BaseController {
         Item secondItem = new Item.Builder().withName("Phone").withPrice(300).Build();
         items.add(firstItem);
         items.add(secondItem);
-
 
         cashCheckBox.setSelected(true);
 
