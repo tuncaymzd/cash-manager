@@ -1,6 +1,4 @@
-import controllers.FirstScreenController;
-import controllers.SecondScreenController;
-import controllers.ThirdScreenController;
+import controllers.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,20 +6,26 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.Settings;
 import services.dataServices.SettingsDataAccessor;
+import shared.IOC;
 
 public class Main extends Application {
-
+    static IOC ioc = new IOC();
     Settings settings = new Settings.Builder().Build();
     SettingsDataAccessor data = new SettingsDataAccessor();
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
+        settings = data.read(13);
         Stage secondStage = new Stage();
         Stage thirdStage = new Stage();
 
-        FirstScreenController firstScreenController = new FirstScreenController();
+        System.out.println(settings.getPreferedPaymentMethod());
+        FirstScreenController firstScreenController = new FirstScreenController(ioc.getItemDataAccessor(),
+                ioc.getSettingsDataAccessor(), ioc.getCreditCardDataAccessor());
         SecondScreenController secondScreenController = new SecondScreenController();
         ThirdScreenController thirdScreenController = new ThirdScreenController();
+        ThirdScreenChequeController thirdScreenChequeController = new ThirdScreenChequeController();
+        ThirdScreenCardController thirdScreenCardController = new ThirdScreenCardController();
 
         firstScreenController.setSecondListener(thirdScreenController);
         firstScreenController.setFistListener(secondScreenController);
@@ -47,37 +51,45 @@ public class Main extends Application {
         secondStage.setResizable(false);
         secondStage.show();
 
-        FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/ThirdScreenView.fxml"));
-        FXMLLoader thirdLoader2 = new FXMLLoader(getClass().getResource("views/ThirdScreenViewPaiementCard.fxml"));
-        FXMLLoader thirdLoader3 = new FXMLLoader(getClass().getResource("views/ThirdScreenViewPaiementCheck.fxml"));
-        thirdLoader.setController(thirdScreenController);
-        Parent thirdRoot = thirdLoader.load();
-        Scene thirdScene = new Scene(thirdRoot);
-        Parent thirdRoot2 = thirdLoader2.load();
-        Scene thirdScene2 = new Scene(thirdRoot2);
-        Parent thirdRoot3 = thirdLoader3.load();
-        Scene thirdScene3 = new Scene(thirdRoot3);
-        switch (settings.getPreferedPaymentMethod()) {
-            case "espece" :
-                thirdStage.setScene(thirdScene);
-                thirdStage.setTitle("Paiement par espèces");
-            case "cartedecredit" :
-                thirdStage.setScene(thirdScene2);
-                thirdStage.setTitle("Paiement par carte de crédit");
-            case "cheque" :
-                thirdStage.setScene(thirdScene3);
-                thirdStage.setTitle("Paiement par chèque");
-            default :
-                thirdStage.setScene(thirdScene);
-                thirdStage.setTitle("Paiement par espèces");
+        System.out.println(settings.getPreferedPaymentMethod());
+        if (settings.getPreferedPaymentMethod().equals("espece")) {
+            FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/ThirdScreenView.fxml"));
+            thirdLoader.setController(thirdScreenController);
+            Parent thirdRoot = thirdLoader.load();
+            Scene thirdScene = new Scene(thirdRoot);
+            thirdStage.setScene(thirdScene);
+            thirdStage.setTitle("Paiement par espèces");
+            thirdStage.setScene(thirdScene);
+            thirdStage.setResizable(false);
+            thirdScreenController.Initialize();
+            thirdStage.show();
+        } else if (settings.getPreferedPaymentMethod().equals("cartedecredit")) {
+            System.out.println("Coucou");
+            FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/ThirdScreenViewPaiementCard.fxml"));
+            thirdLoader.setController(thirdScreenCardController);
+            Parent thirdRoot = thirdLoader.load();
+            Scene thirdScene = new Scene(thirdRoot);
+            thirdStage.setScene(thirdScene);
+            thirdStage.setTitle("Paiement par carte de crédit");
+            thirdStage.setScene(thirdScene);
+            thirdStage.setResizable(false);
+            thirdScreenCardController.Initialize();
+            thirdStage.show();
+        } else if (settings.getPreferedPaymentMethod().equals("cheque")) {
+            System.out.println("Coucou");
+            FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/ThirdScreenViewPaiementCheck.fxml"));
+            thirdLoader.setController(thirdScreenChequeController);
+            Parent thirdRoot = thirdLoader.load();
+            Scene thirdScene = new Scene(thirdRoot);
+            thirdStage.setScene(thirdScene);
+            thirdStage.setTitle("Paiement par carte de crédit");
+            thirdStage.setScene(thirdScene);
+            thirdStage.setResizable(false);
+            thirdScreenChequeController.Initialize();
+            thirdStage.show();
         }
-        thirdStage.setScene(thirdScene);
-        thirdStage.setResizable(false);
-        thirdScreenController.Initialize();
-        thirdStage.show();
 
     }
-
 
     public static void main(String[] args) {
         launch(args);

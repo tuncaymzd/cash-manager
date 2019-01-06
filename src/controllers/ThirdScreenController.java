@@ -46,7 +46,8 @@ public class ThirdScreenController extends BaseController {
 
     public void Initialize() {
         validateButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 validateButtonAction(e);
             }
         });
@@ -59,16 +60,7 @@ public class ThirdScreenController extends BaseController {
                 }
             }
         });
-        numCart.textProperty().addListener(new ChangeListener<String>() {
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    insertMonnaie.setText(newValue.replaceAll("[^\\d]", ""));
-                }
-            }
-        });
     }
-
     public IListener getSecondListener() {
         return secondListener;
     }

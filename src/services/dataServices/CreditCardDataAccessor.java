@@ -1,7 +1,6 @@
 package services.dataServices;
 
-import models.CreditCards;
-import sun.jvm.hotspot.memory.SystemDictionary;
+import models.CreditCard;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -12,19 +11,19 @@ import java.util.ArrayList;
 
 import static java.sql.Types.NULL;
 
-public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
+public class CreditCardDataAccessor implements IDataAccessor<CreditCard> {
 
     public CreditCardDataAccessor(){
 
     }
 
     @Override
-    public void create(CreditCards obj) {
+    public void create(CreditCard obj) {
         SQLiteConnection.getInstance().Connect();
         Connection connection = SQLiteConnection.getInstance().getConnection();
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT into 'CreditCards'('CreditCardCode','OwnerName','BackCVCode','BankName') VALUES (" + obj.getCreditCardCode() + ",'" + obj.getOwnerName() + "'" + "," + obj.getBackCVCode()+", '"+ obj.getBankName() + "');");
+            statement.executeUpdate("INSERT into CreditCard('CreditCardCode','OwnerName','BackCVCode','BankName') VALUES (" + obj.getCreditCardCode() + ",'" + obj.getOwnerName() + "'" + "," + obj.getBackCVCode()+", '"+ obj.getBankName() + "');");
             statement.close();
             SQLiteConnection.getInstance().DisConnect();
         } catch (SQLException e) {
@@ -36,17 +35,17 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
     }
 
     @Override
-    public ArrayList<CreditCards> readAll() {
+    public ArrayList<CreditCard> readAll() {
 
-        ArrayList<CreditCards> cardsList = new ArrayList<CreditCards>();
+        ArrayList<CreditCard> cardsList = new ArrayList<CreditCard>();
         try{
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
             ResultSet set = statement.executeQuery("SELECT * From CreditCards;");
             while (set.next()){
-                CreditCards cardsTmp = null;
-                cardsTmp = new CreditCards.Builder().Build();
+                CreditCard cardsTmp = null;
+                cardsTmp = new CreditCard.Builder().Build();
                 cardsTmp.setId(set.getInt(1));
                 cardsTmp.setCreditCardCode(set.getInt(2));
                 cardsTmp.setOwnerName(set.getString(3));
@@ -66,14 +65,14 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
     }
 
     @Override
-    public CreditCards read(int id) {
-        CreditCards cards = null;
+    public CreditCard read(int id) {
+        CreditCard cards = null;
         try{
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
             ResultSet set = statement.executeQuery("SELECT * from 'CreditCards' WHERE ID = "+id+";");
-            CreditCards bufferCards = new CreditCards.Builder().Build();
+            CreditCard bufferCards = new CreditCard.Builder().Build();
             while (set.next()){
                 bufferCards.setId(set.getInt(1));
                 bufferCards.setCreditCardCode(set.getInt(2));
@@ -99,7 +98,7 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("delete FROM 'CreditCards' WHERE ID = "+index+";");
+            statement.executeUpdate("delete FROM CreditCard WHERE ID = "+index+";");
             System.out.println("This credit card has been deleted");
             statement.close();
         } catch (SQLException e){
@@ -111,7 +110,7 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
     }
 
     @Override
-    public void update(CreditCards obj) {
+    public void update(CreditCard obj) {
         try{
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
@@ -127,7 +126,7 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
     }
 
     public boolean codeIsGood(long code, String name) {
-        try{
+        try {
             SQLiteConnection.getInstance().Connect();
             Connection connection = SQLiteConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
@@ -137,13 +136,12 @@ public class CreditCardDataAccessor implements IDataAccessor<CreditCards> {
                 if (mdp == code) {
                     System.out.println("This code is good");
                     return true;
-                }
-                else {
+                } else {
                     System.out.println("This code is false");
                     return false;
                 }
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Error occured while verify code of cards");
             e.printStackTrace();
         } finally {

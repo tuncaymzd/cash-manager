@@ -4,21 +4,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="thirdScene" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
+        <TextField fx:id="numCart" layoutX="150.0" layoutY="254.0" prefHeight="33.0" prefWidth="348.0" />
+        <Label layoutX="43.0" layoutY="271.0" text="Code de la carte" />
+        <Label layoutX="73.0" layoutY="202.0" text="Nom" />
+        <Label layoutX="36.0" layoutY="144.0" text="Statut du paiement" />
+        <TextField fx:id="statusPaiement" layoutX="150.0" layoutY="136.0" prefHeight="33.0" prefWidth="348.0" />
+        <Button fx:id="validate" layoutX="472.0" layoutY="326.0" mnemonicParsing="false" text="Valider" />
+        <TextField fx:id="name" layoutX="150.0" layoutY="194.0" prefHeight="33.0" prefWidth="348.0" />
         <TextField fx:id="montantTotal" layoutX="150.0" layoutY="25.0" prefHeight="33.0" prefWidth="186.0" />
-        <Pane fx:id="printStatus" layoutX="14.0" layoutY="66.0" prefHeight="306.0" prefWidth="573.0">
-            <children>
-                <TextField fx:id="statusPaiement" layoutX="199.0" layoutY="63.0" prefHeight="33.0" prefWidth="348.0" />
-                <TextField fx:id="name" layoutX="199.0" layoutY="120.0" prefHeight="33.0" prefWidth="348.0" />
-            <Button fx:id="validate" layoutX="494.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Valider" />
-            <TextField fx:id="numCart" layoutX="199.0" layoutY="177.0" prefHeight="33.0" prefWidth="348.0" />
-            <Label layoutX="45.0" layoutY="194.0" text="Code de la carte" />
-            <Label layoutX="45.0" layoutY="128.0" text="Nom" />
-            <Label layoutX="45.0" layoutY="71.0" text="Statut du paiement" />
-            </children></Pane>
-      <Label layoutX="50.0" layoutY="33.0" text="Montant total" />
+        <Label layoutX="50.0" layoutY="33.0" text="Montant total" />
     </children>
 </AnchorPane>

@@ -6,7 +6,7 @@ public class BaseController implements IListener {
 
     private IListener fistListener;
 
-    public IListener getListListener() {
+    public IListener getFistListener() {
         return fistListener;
     }
 
@@ -16,6 +16,11 @@ public class BaseController implements IListener {
 
     @Override
     public void onEventFired(String message) {
+
+    }
+
+    @Override
+    public void updateTotalPrice(float price) {
 
     }
 }
