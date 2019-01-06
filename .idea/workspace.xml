@@ -2,32 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a820615a-561f-4020-bc46-c49f4b279961" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/ThirdScreenCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/ThirdScreenChequeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/IOC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cash Manager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Cash Manager.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CashManagerDB.db-journal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Cash Manager/controllers/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cash Manager/controllers/BaseController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Cash Manager/controllers/FirstScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cash Manager/controllers/FirstScreenController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Cash Manager/shared/IListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cash Manager/shared/IListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cash Manager/views/FirstScreenView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cash Manager/views/FirstScreenView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlite-jdbc-3.23.1.jar.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BaseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/FirstScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FirstScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/SecondScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SecondScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ThirdScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ThirdScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/CreditCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/CreditCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/dataServices/CreditCardDataAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/dataServices/CreditCardDataAccessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/dataServices/SQLiteConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/dataServices/SQLiteConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/IListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/IListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/FirstScreenView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/FirstScreenView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/PaiementDone.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/PaiementDone.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/ThirdScreenViewPaiementCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ThirdScreenViewPaiementCard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/ThirdScreenViewPaiementCheck.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ThirdScreenViewPaiementCheck.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/src/controllers/ThirdScreenCardController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="123">
-              <caret line="43" column="29" lean-forward="true" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+              <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1150#1151#0" expanded="true" />
@@ -143,32 +124,45 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/FirstScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="145" column="125" selection-start-line="145" selection-start-column="125" selection-end-line="145" selection-end-column="125" />
+            <state relative-caret-position="408">
+              <caret line="222" column="39" selection-start-line="222" selection-start-column="39" selection-end-line="222" selection-end-column="39" />
               <folding>
-                <element signature="e#8444#8445#0" expanded="true" />
-                <element signature="e#8481#8482#0" expanded="true" />
-                <element signature="e#8524#8525#0" expanded="true" />
-                <element signature="e#8560#8561#0" expanded="true" />
-                <element signature="e#8623#8624#0" expanded="true" />
-                <element signature="e#8675#8676#0" expanded="true" />
-                <element signature="e#8736#8737#0" expanded="true" />
-                <element signature="e#8786#8787#0" expanded="true" />
-                <element signature="e#8848#8849#0" expanded="true" />
-                <element signature="e#8891#8892#0" expanded="true" />
+                <element signature="e#4232#4233#0" expanded="true" />
+                <element signature="e#4288#4289#0" expanded="true" />
+                <element signature="e#5348#5349#0" expanded="true" />
+                <element signature="e#5427#5428#0" expanded="true" />
+                <element signature="e#5542#5543#0" expanded="true" />
+                <element signature="e#5653#5654#0" expanded="true" />
+                <element signature="e#5758#5759#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/BaseController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#176#177#0" expanded="true" />
+                <element signature="e#211#212#0" expanded="true" />
+                <element signature="e#270#271#0" expanded="true" />
+                <element signature="e#318#319#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/shared/IListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -217,9 +211,9 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/services/dataServices/CreditCardDataAccessor.java" />
         <option value="$PROJECT_DIR$/src/models/CreditCards.java" />
+        <option value="$PROJECT_DIR$/src/controllers/FirstScreenController.java" />
         <option value="$PROJECT_DIR$/src/controllers/BaseController.java" />
         <option value="$PROJECT_DIR$/src/shared/IListener.java" />
-        <option value="$PROJECT_DIR$/src/controllers/FirstScreenController.java" />
       </list>
     </option>
   </component>
@@ -297,7 +291,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546794359360" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546795389337" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
@@ -422,12 +416,12 @@
       <workItem from="1546770208014" duration="3738000" />
       <workItem from="1546774140802" duration="3365000" />
       <workItem from="1546780712206" duration="3744000" />
-      <workItem from="1546784493802" duration="5416000" />
+      <workItem from="1546784493802" duration="6445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54983000" />
+    <option name="totallyTimeSpent" value="56012000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
@@ -437,7 +431,7 @@
       <window_info id="Capture Tool" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.22336769" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.22336769" />
       <window_info id="Structure" order="5" weight="0.25" />
       <window_info id="Favorites" order="6" />
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32977462" />
@@ -446,7 +440,7 @@
       <window_info anchor="bottom" id="Find" order="3" weight="0.32977462" />
       <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.32977462" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.32384342" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.32384342" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.39976275" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -559,13 +553,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ClassDiagram1.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="jar://C:/Program Files/Java/openjfx-11.0.1_windows-x64_bin-sdk/javafx-sdk-11.0.1/lib/javafx.base.jar!/javafx/beans/value/ChangeListener.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/SecondScreenView.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -802,19 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/BaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <element signature="e#176#177#0" expanded="true" />
-            <element signature="e#211#212#0" expanded="true" />
-            <element signature="e#270#271#0" expanded="true" />
-            <element signature="e#318#319#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/dataServices/CreditCardDataAccessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2567">
@@ -859,10 +833,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/SecondScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/openjfx-11.0.1_windows-x64_bin-sdk/javafx-sdk-11.0.1/lib/javafx.base.jar!/javafx/beans/value/ChangeListener.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/FirstScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="222" column="39" selection-start-line="222" selection-start-column="39" selection-end-line="222" selection-end-column="39" />
+          <folding>
+            <element signature="e#4232#4233#0" expanded="true" />
+            <element signature="e#4288#4289#0" expanded="true" />
+            <element signature="e#5348#5349#0" expanded="true" />
+            <element signature="e#5427#5428#0" expanded="true" />
+            <element signature="e#5542#5543#0" expanded="true" />
+            <element signature="e#5653#5654#0" expanded="true" />
+            <element signature="e#5758#5759#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/ThirdScreenCardController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
-          <caret line="43" column="29" lean-forward="true" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+          <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1150#1151#0" expanded="true" />
@@ -881,46 +895,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/SecondScreenController.java">
+    <entry file="file://$PROJECT_DIR$/src/controllers/BaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="47" />
+        <state relative-caret-position="403">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#318#319#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/IListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/FirstScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="145" column="125" selection-start-line="145" selection-start-column="125" selection-end-line="145" selection-end-column="125" />
-          <folding>
-            <element signature="e#8444#8445#0" expanded="true" />
-            <element signature="e#8481#8482#0" expanded="true" />
-            <element signature="e#8524#8525#0" expanded="true" />
-            <element signature="e#8560#8561#0" expanded="true" />
-            <element signature="e#8623#8624#0" expanded="true" />
-            <element signature="e#8675#8676#0" expanded="true" />
-            <element signature="e#8736#8737#0" expanded="true" />
-            <element signature="e#8786#8787#0" expanded="true" />
-            <element signature="e#8848#8849#0" expanded="true" />
-            <element signature="e#8891#8892#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

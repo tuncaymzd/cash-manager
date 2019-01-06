@@ -142,81 +142,6 @@ public class FirstScreenController extends BaseController {
         shoppingCardTable.getSelectionModel().selectedItemProperty().addListener((obj, old, newValue) -> {
             selectedItem = (Item) newValue;
         });
-
-        // Les fonctions suivantes sont là car j'ai voulu gérer la chose avec des boutons (Mauvais pull sur la beta surement)
-
-        /*
-       carte.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                ThirdScreenCardController thirdScreenController = new ThirdScreenCardController();
-                Stage thirdStage = new Stage();
-
-                FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("../views/ThirdScreenViewPaiementCard.fxml"));
-                thirdLoader.setController(thirdScreenController);
-                Parent thirdRoot = null;
-                try {
-                    thirdRoot = thirdLoader.load();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-                Scene thirdScene = new Scene(thirdRoot);
-                thirdStage.setTitle("Paiement par carte");
-                thirdStage.setScene(thirdScene);
-                thirdStage.setResizable(false);
-                thirdScreenController.Initialize();
-                thirdStage.show();
-            }
-        });
-
-        espece.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                ThirdScreenController thirdScreenController = new ThirdScreenController();
-                Stage thirdStage = new Stage();
-
-                FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("../views/ThirdScreenView.fxml"));
-                thirdLoader.setController(thirdScreenController);
-                Parent thirdRoot = null;
-                try {
-                    thirdRoot = thirdLoader.load();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-                Scene thirdScene = new Scene(thirdRoot);
-                thirdStage.setTitle("Paiement par espèces");
-                thirdStage.setScene(thirdScene);
-                thirdStage.setResizable(false);
-                thirdScreenController.Initialize();
-                thirdStage.show();
-            }
-        });
-
-        cheque.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                ThirdScreenChequeController thirdScreenController = new ThirdScreenChequeController();
-                Stage thirdStage = new Stage();
-
-                FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("../views/ThirdScreenViewPaiementCheck.fxml"));
-                thirdLoader.setController(thirdScreenController);
-                Parent thirdRoot = null;
-                try {
-                    thirdRoot = thirdLoader.load();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-                Scene thirdScene = new Scene(thirdRoot);
-                thirdStage.setTitle("Paiement par espèces");
-                thirdStage.setScene(thirdScene);
-                thirdStage.setResizable(false);
-                thirdScreenController.Initialize();
-                thirdStage.show();
-            }
-        });
-        */
     }
 
     public IListener getSecondListener() {
@@ -241,7 +166,62 @@ public class FirstScreenController extends BaseController {
     }
 
     private void validateButtonClicked(ActionEvent event) {
+        if (checkCheckBox.isSelected()) {
+            ThirdScreenChequeController thirdScreenController = new ThirdScreenChequeController();
+            Stage thirdStage = new Stage();
 
+            FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("../views/ThirdScreenViewPaiementCheck.fxml"));
+            thirdLoader.setController(thirdScreenController);
+            Parent thirdRoot = null;
+            try {
+                thirdRoot = thirdLoader.load();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            Scene thirdScene = new Scene(thirdRoot);
+            thirdStage.setTitle("Paiement par espèces");
+            thirdStage.setScene(thirdScene);
+            thirdStage.setResizable(false);
+            thirdScreenController.Initialize();
+            thirdStage.show();
+        } else if (cashCheckBox.isSelected()) {
+            ThirdScreenController thirdScreenController = new ThirdScreenController();
+            Stage thirdStage = new Stage();
+
+            FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("../views/ThirdScreenView.fxml"));
+            thirdLoader.setController(thirdScreenController);
+            Parent thirdRoot = null;
+            try {
+                thirdRoot = thirdLoader.load();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            Scene thirdScene = new Scene(thirdRoot);
+            thirdStage.setTitle("Paiement par espèces");
+            thirdStage.setScene(thirdScene);
+            thirdStage.setResizable(false);
+            thirdScreenController.Initialize();
+            thirdStage.show();
+        } else {
+            ThirdScreenCardController thirdScreenController = new ThirdScreenCardController();
+            Stage thirdStage = new Stage();
+
+            FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("../views/ThirdScreenViewPaiementCard.fxml"));
+            thirdLoader.setController(thirdScreenController);
+            Parent thirdRoot = null;
+            try {
+                thirdRoot = thirdLoader.load();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            Scene thirdScene = new Scene(thirdRoot);
+            thirdStage.setTitle("Paiement par carte");
+            thirdStage.setScene(thirdScene);
+            thirdStage.setResizable(false);
+            thirdScreenController.Initialize();
+            thirdStage.show();
+            thirdListener.closeSCene();
+        }
     }
 
     private void removeButtonClicked(ActionEvent event) {

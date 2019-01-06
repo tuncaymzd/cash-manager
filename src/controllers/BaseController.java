@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import shared.IListener;
 
 public class BaseController implements IListener {
