@@ -15,6 +15,7 @@ import models.Item;
 import models.Settings;
 import services.dataServices.IDataAccessor;
 import shared.IListener;
+import shared.PaymentMethod;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +28,7 @@ public class FirstScreenController extends BaseController {
     final ObservableList<Item> items = FXCollections.observableArrayList();
     final ObservableList<Item> shoppingCard = FXCollections.observableArrayList();
     Item selectedItem = null;
+    PaymentMethod paymentMethod;
 
     @FXML
     private Button removebutton;
@@ -76,6 +78,7 @@ public class FirstScreenController extends BaseController {
 
     public void Initialize(){
 
+        paymentMethod = PaymentMethod.Cash;
         addItemsToListUI(_itemDataAccessor.readAll());
         totalAmountLabel.setText("");
 
@@ -85,6 +88,7 @@ public class FirstScreenController extends BaseController {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
                 if(cashCheckBox.isSelected()){
+                    paymentMethod = PaymentMethod.Cash;
                     checkCheckBox.setSelected(false);
                     creditCardCheckBox.setSelected(false);
                 }
@@ -94,6 +98,7 @@ public class FirstScreenController extends BaseController {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
                 if(checkCheckBox.isSelected()){
+                    paymentMethod = PaymentMethod.Check;
                     cashCheckBox.setSelected(false);
                     creditCardCheckBox.setSelected(false);
                 }
@@ -103,6 +108,7 @@ public class FirstScreenController extends BaseController {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
                 if(creditCardCheckBox.isSelected()){
+                    paymentMethod = PaymentMethod.CreditCard;
                     checkCheckBox.setSelected(false);
                     cashCheckBox.setSelected(false);
                 }
@@ -159,8 +165,9 @@ public class FirstScreenController extends BaseController {
     }
 
     private void validateButtonClicked(ActionEvent event) {
-
+        thirdListener.operatePayment(paymentMethod);
     }
+
     private void removeButtonClicked(ActionEvent event){
         if(selectedItem != null){
             totalPrice -= selectedItem.getPrice();

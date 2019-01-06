@@ -1,6 +1,7 @@
 package controllers;
 
 import shared.IListener;
+import shared.PaymentMethod;
 
 public class BaseController implements IListener {
 
@@ -21,6 +22,11 @@ public class BaseController implements IListener {
 
     @Override
     public void updateTotalPrice(float price) {
+
+    }
+
+    @Override
+    public void operatePayment(PaymentMethod method) {
 
     }
 }

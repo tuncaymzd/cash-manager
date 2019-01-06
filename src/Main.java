@@ -29,7 +29,25 @@ public class Main extends Application {
         FirstScreenController firstScreenController = new FirstScreenController(ioc.getItemDataAccessor(),
                 ioc.getSettingsDataAccessor(), ioc.getCreditCardDataAccessor());
         SecondScreenController secondScreenController = new SecondScreenController();
-        ThirdScreenController thirdScreenController = new ThirdScreenController();
+        ThirdScreenController thirdScreenController = new ThirdScreenController(ioc.getCashPaymentService(), thirdStage);
+
+
+        Scene cashScene;
+        Scene checkScene;
+        Scene creditCardScene;
+
+        FXMLLoader cashLoader = new FXMLLoader(getClass().getResource("views/CashPaymentScreen.fxml"));
+        Parent cashRoot = cashLoader.load();
+        cashScene = new Scene(cashRoot);
+
+//        FXMLLoader checkLoader = new FXMLLoader(getClass().getResource("views/CheckPaymentScreen.fxml"));
+//        Parent checkRoot = cashLoader.load();
+//        checkScene = new Scene(cashRoot);
+
+
+//        FXMLLoader creditCardLoader = new FXMLLoader(getClass().getResource("views/CreditCardPaymentScreen.fxml"));
+//        Parent creditCardRoot = cashLoader.load();
+//        creditCardScene = new Scene(cashRoot);
 
         FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("views/FirstScreenView.fxml"));
         firstLoader.setController(firstScreenController);
@@ -50,10 +68,10 @@ public class Main extends Application {
         secondStage.setResizable(false);
         secondStage.show();
 
-        FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/ThirdScreenView.fxml"));
-        thirdLoader.setController(thirdScreenController);
+        FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/CashPaymentScreen.fxml"));
         Parent thirdRoot = thirdLoader.load();
         Scene thirdScene = new Scene(thirdRoot);
+        thirdLoader.setController(thirdScreenController);
         thirdStage.setTitle("Third Screen");
         thirdStage.setScene(thirdScene);
         thirdStage.setResizable(false);
@@ -61,6 +79,8 @@ public class Main extends Application {
 
         firstScreenController.setSecondListener(secondScreenController);
         firstScreenController.setFistListener(thirdScreenController);
+        thirdScreenController.Initialize();
+        firstScreenController.setThirdListener(thirdScreenController);
         secondScreenController.setFistListener(firstScreenController);
         thirdScreenController.setFistListener(firstScreenController);
     }

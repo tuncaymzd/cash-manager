@@ -7,24 +7,14 @@ import models.Settings;
 import services.dataServices.CreditCardDataAccessor;
 import services.dataServices.ItemDataAccessor;
 import services.dataServices.SettingsDataAccessor;
+import services.paymentServices.CashPaymentService;
 
 public class IOC {
 
     IDataAccessor<Item> itemDataAccessor;
     IDataAccessor<Settings> settingsDataAccessor;
     IDataAccessor<CreditCard> creditCardDataAccessor;
-
-    public void setItemDataAccessor(IDataAccessor<Item> itemDataAccessor) {
-        this.itemDataAccessor = itemDataAccessor;
-    }
-
-    public void setSettingsDataAccessor(IDataAccessor<Settings> settingsDataAccessor) {
-        this.settingsDataAccessor = settingsDataAccessor;
-    }
-
-    public void setCreditCardDataAccessor(IDataAccessor<CreditCard> creditCardDataAccessor) {
-        this.creditCardDataAccessor = creditCardDataAccessor;
-    }
+    CashPaymentService cashPaymentService;
 
     public IDataAccessor<Settings> getSettingsDataAccessor() {
         return settingsDataAccessor;
@@ -38,10 +28,15 @@ public class IOC {
         return itemDataAccessor;
     }
 
+    public CashPaymentService getCashPaymentService() {
+        return cashPaymentService;
+    }
+
     public IOC()
     {
         itemDataAccessor = new ItemDataAccessor();
         settingsDataAccessor = new SettingsDataAccessor();
         creditCardDataAccessor = new CreditCardDataAccessor();
+        cashPaymentService = new CashPaymentService();
     }
 }
