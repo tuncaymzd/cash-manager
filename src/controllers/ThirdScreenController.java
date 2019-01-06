@@ -18,12 +18,25 @@ public class ThirdScreenController extends BaseController {
     Scene checkScene;
     Scene creditCardScene;
 
+    public void setCashScene(Scene cashScene) {
+        this.cashScene = cashScene;
+    }
+
+    public void setCheckScene(Scene checkScene) {
+        this.checkScene = checkScene;
+    }
+
+    public void setCreditCardScene(Scene creditCardScene) {
+        this.creditCardScene = creditCardScene;
+    }
+
     public ThirdScreenController(CashPaymentService paymentService, Stage stage){
         this.paymentService = paymentService;
         this.stage = stage;
     }
 
     public void Initialize() throws IOException {
+        stage.setScene(cashScene);
     }
 
     @Override

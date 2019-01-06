@@ -32,6 +32,7 @@ public class Main extends Application {
         ThirdScreenController thirdScreenController = new ThirdScreenController(ioc.getCashPaymentService(), thirdStage);
 
 
+
         Scene cashScene;
         Scene checkScene;
         Scene creditCardScene;
@@ -40,14 +41,18 @@ public class Main extends Application {
         Parent cashRoot = cashLoader.load();
         cashScene = new Scene(cashRoot);
 
-//        FXMLLoader checkLoader = new FXMLLoader(getClass().getResource("views/CheckPaymentScreen.fxml"));
-//        Parent checkRoot = cashLoader.load();
-//        checkScene = new Scene(cashRoot);
+        FXMLLoader checkLoader = new FXMLLoader(getClass().getResource("views/CheckPaymentScreen.fxml"));
+        Parent checkRoot = checkLoader.load();
+        checkScene = new Scene(checkRoot);
 
+        FXMLLoader creditCardLoader = new FXMLLoader(getClass().getResource("views/CreditCardPaymentScreen.fxml"));
+        Parent creditCardRoot = creditCardLoader.load();
+        creditCardScene = new Scene(creditCardRoot);
+        thirdScreenController.setCashScene(cashScene);
+        thirdScreenController.setCheckScene(checkScene);
+        thirdScreenController.setCreditCardScene(creditCardScene);
 
-//        FXMLLoader creditCardLoader = new FXMLLoader(getClass().getResource("views/CreditCardPaymentScreen.fxml"));
-//        Parent creditCardRoot = cashLoader.load();
-//        creditCardScene = new Scene(cashRoot);
+        //stage.setScene(cashScene);
 
         FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("views/FirstScreenView.fxml"));
         firstLoader.setController(firstScreenController);
@@ -68,7 +73,7 @@ public class Main extends Application {
         secondStage.setResizable(false);
         secondStage.show();
 
-        FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/CashPaymentScreen.fxml"));
+        FXMLLoader thirdLoader = new FXMLLoader(getClass().getResource("views/ThirdScreenView.fxml"));
         Parent thirdRoot = thirdLoader.load();
         Scene thirdScene = new Scene(thirdRoot);
         thirdLoader.setController(thirdScreenController);
